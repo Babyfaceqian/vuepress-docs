@@ -13,5 +13,5 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa -d
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- scp -r docs/.vuepress/dist/ travis@47.96.14.140:/home/travis/website/vuepress-docs
+# - scp -r docs/.vuepress/dist/ travis@47.96.14.140:/home/travis/website/vuepress-docs
 - ssh travis@47.96.14.140 -o StrictHostKeyChecking=no "nginx -s reload"

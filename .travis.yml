@@ -11,3 +11,5 @@ before_install:
 after_success:
 - scp -r docs/.vuepress/dist/ travis@47.96.14.140:/home/travis/website/vuepress-docs
 - ssh travis@47.96.14.140 -o StrictHostKeyChecking=no "nginx -s reload"
+addons:
+  ssh_known_hosts: 47.96.14.140

@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '8'
+install:
+- npm install
+script:
+- npm run docs:build
+before_install:
+after_success:
+- scp -r docs/.vuepress/dist/ travis@47.96.14.140:/home/travis/website/vuepress-docs
+- ssh travis@47.96.14.140 -o StrictHostKeyChecking=no "nginx -s reload"

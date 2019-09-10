@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Travis自动构建部署服务搭建 | Notebook</title>
+    <meta name="description" content="前端笔记">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.e5c86877.css" as="style"><link rel="preload" href="/assets/js/app.64fb6d0a.js" as="script"><link rel="preload" href="/assets/js/2.5d9cdd2a.js" as="script"><link rel="preload" href="/assets/js/15.1d8a976b.js" as="script"><link rel="prefetch" href="/assets/js/10.5b487c09.js"><link rel="prefetch" href="/assets/js/11.893b2779.js"><link rel="prefetch" href="/assets/js/12.5daeeda3.js"><link rel="prefetch" href="/assets/js/13.cbbbe4bc.js"><link rel="prefetch" href="/assets/js/14.cd7454ce.js"><link rel="prefetch" href="/assets/js/16.e625795a.js"><link rel="prefetch" href="/assets/js/3.33696b86.js"><link rel="prefetch" href="/assets/js/4.0e68f4b8.js"><link rel="prefetch" href="/assets/js/5.d6c1d76b.js"><link rel="prefetch" href="/assets/js/6.892c29eb.js"><link rel="prefetch" href="/assets/js/7.9fe8b1a7.js"><link rel="prefetch" href="/assets/js/8.26fb9c1a.js"><link rel="prefetch" href="/assets/js/9.9daa6b8c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e5c86877.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Notebook</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/webApp/start.html" class="sidebar-link">快速搭建网站</a></li><li><a href="/webApp/nginx-setup.html" class="sidebar-link">Nginx配置web服务</a></li><li><a href="/webApp/node-server.html" class="sidebar-link">NodeJS后端服务搭建</a></li><li><a href="/webApp/react-client.html" class="sidebar-link">React前端环境搭建</a></li><li><a href="/webApp/travis-deploy.html" class="active sidebar-link">Travis自动构建部署服务搭建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webApp/travis-deploy.html#准备工作" class="sidebar-link">准备工作</a></li><li class="sidebar-sub-header"><a href="/webApp/travis-deploy.html#启用travis" class="sidebar-link">启用travis</a></li><li class="sidebar-sub-header"><a href="/webApp/travis-deploy.html#构建打包" class="sidebar-link">构建打包</a></li><li class="sidebar-sub-header"><a href="/webApp/travis-deploy.html#关联服务器" class="sidebar-link">关联服务器</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="travis自动构建部署服务搭建"><a href="#travis自动构建部署服务搭建" aria-hidden="true" class="header-anchor">#</a> Travis自动构建部署服务搭建</h1> <h2 id="准备工作"><a href="#准备工作" aria-hidden="true" class="header-anchor">#</a> 准备工作</h2> <ol><li>待部署的github仓库</li> <li>一台云服务器，这里以阿里云的centOS服务器为例</li> <li>ssh或putty等可以登录到云服务器的工具</li></ol> <h2 id="启用travis"><a href="#启用travis" aria-hidden="true" class="header-anchor">#</a> 启用travis</h2> <blockquote><ol><li>Go to Travis-ci.com and Sign up with GitHub.</li></ol></blockquote> <p>登录travis官网，用github账号登录。</p> <blockquote><ol start="2"><li>Accept the Authorization of Travis CI. You’ll be redirected to GitHub.</li></ol></blockquote> <p>接受Travis CI验证，会跳转到你的github。</p> <blockquote><ol start="3"><li>Click the green Activate button, and select the repositories you want to use with Travis CI.</li></ol></blockquote> <p>点击启用travis按钮，选择需要用travis构建的仓库。</p> <blockquote><ol start="4"><li>Add a <code>.travis.yml</code> file to your repository to tell Travis CI what to do.</li></ol></blockquote> <p>添加<code>.travis.yml</code>到你的仓库根目录，travis会读取这个文件作为配置内容。</p> <blockquote><ol start="5"><li>Add the <code>.travis.yml</code> file to git, commit and push, to trigger a Travis CI build:</li></ol></blockquote> <p>提交<code>.travis.yml</code>会触发travis构建。
+Travis only runs builds on the commits you push after you’ve added a .travis.yml file.</p> <blockquote><ol start="6"><li>Check the build status page to see if your build passes or fails, according to the return status of the build command by visiting the Travis CI and selecting your repository.</li></ol></blockquote> <p>选择对应的仓库，查看构建状态成功还是失败。</p> <p>参考上面官网的步骤，我们会在仓库根目录下添加<code>.travis.yml</code>文件。
+.travis.yml</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token key atrule">language</span><span class="token punctuation">:</span> node_js
+<span class="token key atrule">node_js</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token string">'8'</span>
+</code></pre></div><p>因为我们部署的是node项目，所以语言选择 <code>node_js</code>，版本选择比较高的 <code>8</code>。详细的配置可参考<a href="https://docs.travis-ci.com/user/languages/javascript-with-nodejs/" target="_blank" rel="noopener noreferrer">官网<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。
+构建好之后在travis上就可以看到项目passed。如图所示。
+<img src="evernotecid://5CEB42F5-35BD-4DEF-B080-D633405A01FA/appyinxiangcom/2715342/ENResource/p19" alt="fac39adc6cfc4a850a19f1be66607591.png"></p> <h2 id="构建打包"><a href="#构建打包" aria-hidden="true" class="header-anchor">#</a> 构建打包</h2> <p>travis上的项目构建其实是跑在travis提供的一台虚拟服务器上，在job log我们可以清楚的看到构建用的虚拟服务器信息。
+<img src="evernotecid://5CEB42F5-35BD-4DEF-B080-D633405A01FA/appyinxiangcom/2715342/ENResource/p20" alt="b6c31532d9d53319048042b2412d28df.png">
+这台虚拟的服务器可以做很多事情，比如构建、测试，也可以在上面执行自定义的linux命令或脚本。当然，部署服务器还是需要用自己的。我们的目的是使用travis虚拟服务器进行构建打包（暂时不考虑测试），将打包好的文件用scp传到部署服务器，再执行一些脚本启动服务。</p> <p>修改<code>.travis.yml</code>如下</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token key atrule">language</span><span class="token punctuation">:</span> node_js
+<span class="token key atrule">node_js</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token string">'8'</span>
+<span class="token key atrule">install</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> npm install
+<span class="token key atrule">script</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> npm run build
+<span class="token key atrule">before_install</span><span class="token punctuation">:</span>
+<span class="token key atrule">after_success</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> scp <span class="token punctuation">-</span>r dist/ travis@39.108.158.235<span class="token punctuation">:</span>/home/travis/web/zhangqiantech
+<span class="token punctuation">-</span> ssh travis@39.108.158.235 <span class="token punctuation">-</span>o StrictHostKeyChecking=no &quot;/home/travis/web/zhangqiantech/run.sh&quot;
+
+</code></pre></div><p>这里travis虚拟服务器会帮我们处理<code>install</code>和<code>script</code>命令，打包后的目录是<code>dist</code>，在构建成功后用<code>scp</code>命令将打包后的文件放到部署服务器上。然后登陆到部署服务器执行启动服务的命令。
+由于需要让虚拟服务器能够自动登录到部署服务器执行命令，需要关联服务器。</p> <h2 id="关联服务器"><a href="#关联服务器" aria-hidden="true" class="header-anchor">#</a> 关联服务器</h2> <p>用ssh或putty登录到部署服务器，安装travis。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>$ gem install travis
+</code></pre></div><p>创建并切换到travis用户，后面会用此用户名登陆服务器。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>$ useradd travis
+$ <span class="token builtin">su</span> travis
+</code></pre></div><p>拉取仓库到服务器。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>$ git clone git@github<span class="token operator">.</span><span class="token builtin">com</span><span class="token punctuation">:</span>Babyfaceqian<span class="token operator">/</span>zhangqiantech<span class="token operator">.</span>git
+</code></pre></div><p>登陆travis。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>$ travis login
+</code></pre></div><p>cd到仓库根目录，执行下面的语句，作用是将用于免密登陆的id_rsa也就是私钥加密保存到仓库里面，travis虚拟服务器尝试登陆的时候会通过该私钥登陆到部署服务器。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>$ travis encrypt<span class="token operator">-</span><span class="token keyword">file</span> ~<span class="token operator">/</span><span class="token operator">.</span>ssh<span class="token operator">/</span>id_rsa <span class="token operator">-</span><span class="token operator">-</span>add
+Detected repository <span class="token keyword">as</span> xxx<span class="token operator">/</span>xxx<span class="token punctuation">,</span> <span class="token operator">is</span> this correct<span class="token operator">?</span> |yes| yes
+encrypting ~<span class="token operator">/</span><span class="token operator">.</span>ssh<span class="token operator">/</span>id_rsa <span class="token keyword">for</span> xxx<span class="token operator">/</span>xxx
+storing result <span class="token keyword">as</span> id_rsa<span class="token operator">.</span><span class="token builtin">enc</span>
+storing <span class="token builtin">secure</span> env variables <span class="token keyword">for</span> decryption
+
+Make sure <span class="token keyword">to</span> add id_rsa<span class="token operator">.</span><span class="token builtin">enc</span> <span class="token keyword">to</span> the git repository<span class="token operator">.</span>
+Make sure not <span class="token keyword">to</span> add ~<span class="token operator">/</span><span class="token operator">.</span>ssh<span class="token operator">/</span>id_rsa <span class="token keyword">to</span> the git repository<span class="token operator">.</span>
+Commit <span class="token keyword">all</span> <span class="token keyword">changes</span> <span class="token keyword">to</span> your <span class="token operator">.</span>travis<span class="token operator">.</span>yml<span class="token operator">.</span>
+</code></pre></div><p>执行完后 <code>.travis.yml</code> 的 <code>before-install</code> 下会增加一行内容。</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token key atrule">before_install</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> openssl aes<span class="token punctuation">-</span>256<span class="token punctuation">-</span>cbc <span class="token punctuation">-</span>K $encrypted_d89376f3278d_key <span class="token punctuation">-</span>iv $encrypted_d89376f3278d_iv
+  <span class="token punctuation">-</span>in id_rsa.enc <span class="token punctuation">-</span>out ~\/.ssh/id_rsa <span class="token punctuation">-</span>d
+</code></pre></div><p>为了保证权限正常，还需要添加一行内容。</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token punctuation">-</span> chmod 600 ~/.ssh/id_rsa
+</code></pre></div><p>第一次登陆服务器的时候可能会出现ssh主机验证，可以通过添加 <code>addons</code> 配置解决。</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token key atrule">addons</span><span class="token punctuation">:</span>
+  <span class="token key atrule">ssh_known_hosts</span><span class="token punctuation">:</span> 39.108.158.235
+</code></pre></div><p>保存 <code>.travis.yml</code> 并提交代码。现在travis可以自动免密登陆到部署服务器上执行命令了。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/webApp/react-client.html" class="prev">
+          React前端环境搭建
+        </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.64fb6d0a.js" defer></script><script src="/assets/js/2.5d9cdd2a.js" defer></script><script src="/assets/js/15.1d8a976b.js" defer></script>
+  </body>
+</html>

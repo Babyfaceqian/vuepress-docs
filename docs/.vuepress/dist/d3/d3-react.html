@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>d3与react | Notebook</title>
+    <meta name="description" content="前端笔记">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.e5c86877.css" as="style"><link rel="preload" href="/assets/js/app.64fb6d0a.js" as="script"><link rel="preload" href="/assets/js/2.5d9cdd2a.js" as="script"><link rel="preload" href="/assets/js/9.9daa6b8c.js" as="script"><link rel="prefetch" href="/assets/js/10.5b487c09.js"><link rel="prefetch" href="/assets/js/11.893b2779.js"><link rel="prefetch" href="/assets/js/12.5daeeda3.js"><link rel="prefetch" href="/assets/js/13.cbbbe4bc.js"><link rel="prefetch" href="/assets/js/14.cd7454ce.js"><link rel="prefetch" href="/assets/js/15.1d8a976b.js"><link rel="prefetch" href="/assets/js/16.e625795a.js"><link rel="prefetch" href="/assets/js/3.33696b86.js"><link rel="prefetch" href="/assets/js/4.0e68f4b8.js"><link rel="prefetch" href="/assets/js/5.d6c1d76b.js"><link rel="prefetch" href="/assets/js/6.892c29eb.js"><link rel="prefetch" href="/assets/js/7.9fe8b1a7.js"><link rel="prefetch" href="/assets/js/8.26fb9c1a.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e5c86877.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Notebook</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/d3/d3-API.html" class="sidebar-link">D3 API详解</a></li><li><a href="/d3/d3-canvas-axis.html" class="sidebar-link">d3与canvas坐标系</a></li><li><a href="/d3/d3-react.html" class="active sidebar-link">d3与react</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/d3/d3-react.html#职责" class="sidebar-link">职责</a></li><li class="sidebar-sub-header"><a href="/d3/d3-react.html#需要使用d3渲染的情况" class="sidebar-link">需要使用d3渲染的情况</a></li><li class="sidebar-sub-header"><a href="/d3/d3-react.html#配合" class="sidebar-link">配合</a></li></ul></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="d3与react"><a href="#d3与react" aria-hidden="true" class="header-anchor">#</a> d3与react</h1> <h2 id="职责"><a href="#职责" aria-hidden="true" class="header-anchor">#</a> 职责</h2> <ol><li>d3负责calculate</li> <li>react负责render</li></ol> <h2 id="需要使用d3渲染的情况"><a href="#需要使用d3渲染的情况" aria-hidden="true" class="header-anchor">#</a> 需要使用d3渲染的情况</h2> <ol><li>transition</li> <li>axes</li> <li>brushes</li></ol> <h2 id="配合"><a href="#配合" aria-hidden="true" class="header-anchor">#</a> 配合</h2> <ol><li>将svg元素写在react的render方法下</li> <li>将data保存在state当中，并在render中使用</li> <li>在willReceiveProps函数中监听props变化，获取到最新数据并处理得到data，然后更新state</li> <li>在didUpdate函数中处理需要d3渲染的操作</li></ol></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/d3/d3-canvas-axis.html" class="prev">
+          d3与canvas坐标系
+        </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.64fb6d0a.js" defer></script><script src="/assets/js/2.5d9cdd2a.js" defer></script><script src="/assets/js/9.9daa6b8c.js" defer></script>
+  </body>
+</html>

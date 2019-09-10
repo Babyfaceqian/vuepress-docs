@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Nginx配置web服务 | Notebook</title>
+    <meta name="description" content="前端笔记">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.e5c86877.css" as="style"><link rel="preload" href="/assets/js/app.64fb6d0a.js" as="script"><link rel="preload" href="/assets/js/2.5d9cdd2a.js" as="script"><link rel="preload" href="/assets/js/11.893b2779.js" as="script"><link rel="prefetch" href="/assets/js/10.5b487c09.js"><link rel="prefetch" href="/assets/js/12.5daeeda3.js"><link rel="prefetch" href="/assets/js/13.cbbbe4bc.js"><link rel="prefetch" href="/assets/js/14.cd7454ce.js"><link rel="prefetch" href="/assets/js/15.1d8a976b.js"><link rel="prefetch" href="/assets/js/16.e625795a.js"><link rel="prefetch" href="/assets/js/3.33696b86.js"><link rel="prefetch" href="/assets/js/4.0e68f4b8.js"><link rel="prefetch" href="/assets/js/5.d6c1d76b.js"><link rel="prefetch" href="/assets/js/6.892c29eb.js"><link rel="prefetch" href="/assets/js/7.9fe8b1a7.js"><link rel="prefetch" href="/assets/js/8.26fb9c1a.js"><link rel="prefetch" href="/assets/js/9.9daa6b8c.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e5c86877.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Notebook</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><a href="/webApp/start.html" class="sidebar-link">快速搭建网站</a></li><li><a href="/webApp/nginx-setup.html" class="active sidebar-link">Nginx配置web服务</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/webApp/nginx-setup.html#配置" class="sidebar-link">配置</a></li><li class="sidebar-sub-header"><a href="/webApp/nginx-setup.html#常用命令" class="sidebar-link">常用命令</a></li></ul></li><li><a href="/webApp/node-server.html" class="sidebar-link">NodeJS后端服务搭建</a></li><li><a href="/webApp/react-client.html" class="sidebar-link">React前端环境搭建</a></li><li><a href="/webApp/travis-deploy.html" class="sidebar-link">Travis自动构建部署服务搭建</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nginx配置web服务"><a href="#nginx配置web服务" aria-hidden="true" class="header-anchor">#</a> Nginx配置web服务</h1> <h2 id="配置"><a href="#配置" aria-hidden="true" class="header-anchor">#</a> 配置</h2> <p>粗暴修改/etc/nginx/nginx.conf。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>
+user root<span class="token punctuation">;</span>
+######################################
+upstream nodeserver1 <span class="token punctuation">{</span>
+    	server localhost<span class="token punctuation">:</span><span class="token number">8001</span><span class="token punctuation">;</span>	
+    <span class="token punctuation">}</span>
+    server <span class="token punctuation">{</span>
+       # listen       <span class="token number">3000</span> default_server<span class="token punctuation">;</span>
+       # listen       <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token number">3000</span> default_server<span class="token punctuation">;</span>
+	listen <span class="token number">80</span><span class="token punctuation">;</span>
+        ##server_name  www<span class="token operator">.</span>mikeandlyle<span class="token operator">.</span><span class="token builtin">top</span><span class="token punctuation">;</span>
+        server_name <span class="token number">39.108</span><span class="token operator">.</span><span class="token number">158.235</span><span class="token punctuation">;</span>
+	#root         <span class="token operator">/</span>usr<span class="token operator">/</span>share<span class="token operator">/</span>nginx<span class="token operator">/</span>html<span class="token punctuation">;</span>
+	root		<span class="token operator">/</span>home<span class="token operator">/</span>travis<span class="token operator">/</span>web<span class="token operator">/</span>zhangqiantech<span class="token operator">/</span>dist<span class="token punctuation">;</span>
+	index	index<span class="token operator">.</span>html<span class="token punctuation">;</span>
+        # Load configuration <span class="token keyword">files</span> <span class="token keyword">for</span> the default server block<span class="token operator">.</span>
+        <span class="token builtin">include</span> <span class="token operator">/</span>etc<span class="token operator">/</span>nginx<span class="token operator">/</span>default<span class="token operator">.</span><span class="token keyword">d</span><span class="token operator">/</span><span class="token operator">*</span><span class="token operator">.</span><span class="token keyword">conf</span><span class="token punctuation">;</span>
+
+        #location <span class="token operator">/</span> <span class="token punctuation">{</span>
+	#    proxy_pass   http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>nodeserver1<span class="token punctuation">;</span>
+        #<span class="token punctuation">}</span>
+	location <span class="token operator">/</span> <span class="token punctuation">{</span>
+        	try_files $uri $uri<span class="token operator">/</span> <span class="token operator">/</span>index<span class="token operator">.</span>html<span class="token punctuation">;</span>    
+    	<span class="token punctuation">}</span>
+	location ^~ <span class="token operator">/</span>api<span class="token operator">/</span> <span class="token punctuation">{</span>
+		proxy_pass http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>nodeserver1<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+        error_page <span class="token number">404</span> <span class="token operator">/</span><span class="token number">404</span><span class="token operator">.</span>html<span class="token punctuation">;</span>
+            location <span class="token operator">=</span> <span class="token operator">/</span>40x<span class="token operator">.</span>html <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+
+        error_page <span class="token number">500</span> <span class="token number">502</span> <span class="token number">503</span> <span class="token number">504</span> <span class="token operator">/</span>50x<span class="token operator">.</span>html<span class="token punctuation">;</span>
+            location <span class="token operator">=</span> <span class="token operator">/</span>50x<span class="token operator">.</span>html <span class="token punctuation">{</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+</code></pre></div><p>解释一下配置。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>user root<span class="token punctuation">;</span>
+</code></pre></div><p>设置nginx操作的用户，如果用户没有对一些nginx需要操作的文件的操作权限，那么nginx服务可能会有问题甚至挂掉。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>upstream nodeserver1 <span class="token punctuation">{</span>
+    	server localhost<span class="token punctuation">:</span><span class="token number">8001</span><span class="token punctuation">;</span>	
+    <span class="token punctuation">}</span>
+    
+location ^~ <span class="token operator">/</span>api<span class="token operator">/</span> <span class="token punctuation">{</span>
+		proxy_pass http<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>nodeserver1<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+</code></pre></div><p>这里在调用路由前缀为<code>/api/</code>时，将后端服务指向<code>localhost:8001</code>。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>listen <span class="token number">80</span><span class="token punctuation">;</span>
+    server_name <span class="token number">39.108</span><span class="token operator">.</span><span class="token number">158.235</span><span class="token punctuation">;</span>
+	root		<span class="token operator">/</span>home<span class="token operator">/</span>travis<span class="token operator">/</span>web<span class="token operator">/</span>zhangqiantech<span class="token operator">/</span>dist<span class="token punctuation">;</span>
+	index	index<span class="token operator">.</span>html<span class="token punctuation">;</span>
+</code></pre></div><p>这里设置监听端口、静态目录和文件，当访问 <code>30.108.158.235</code>的根目录时，返回<code>index.html</code>。</p> <div class="language-vim extra-class"><pre class="language-vim"><code>location <span class="token operator">/</span> <span class="token punctuation">{</span>
+        	try_files $uri $uri<span class="token operator">/</span> <span class="token operator">/</span>index<span class="token operator">.</span>html<span class="token punctuation">;</span>    
+    	<span class="token punctuation">}</span>
+</code></pre></div><p>这里的设置主要是针对前端采用<code>browserRouter</code>（html5 router），访问任何路由都会返回<code>index.html</code>，如果不设置，刷新页面会报404 not found。</p> <h2 id="常用命令"><a href="#常用命令" aria-hidden="true" class="header-anchor">#</a> 常用命令</h2> <div class="language-vim extra-class"><pre class="language-vim"><code>sudo nginx #打开 nginx
+nginx <span class="token operator">-</span>s reload|reopen|<span class="token keyword">stop</span>|<span class="token keyword">quit</span>  #重新加载配置|重启|停止|退出 nginx
+nginx <span class="token operator">-</span><span class="token keyword">t</span>   #测试配置是否有语法错误
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/webApp/start.html" class="prev">
+          快速搭建网站
+        </a></span> <span class="next"><a href="/webApp/node-server.html">
+          NodeJS后端服务搭建
+        </a>
+        →
+      </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.64fb6d0a.js" defer></script><script src="/assets/js/2.5d9cdd2a.js" defer></script><script src="/assets/js/11.893b2779.js" defer></script>
+  </body>
+</html>

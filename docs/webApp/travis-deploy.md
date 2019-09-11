@@ -97,6 +97,8 @@ before_install:
   - openssl aes-256-cbc -K $encrypted_d89376f3278d_key -iv $encrypted_d89376f3278d_iv
   -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 ```
+复制id_rsa.pub到同目录authorized_keys。
+这里要注意的一点是，如果是linux服务器，需要将以上id_rsa的路径修改为`~/.ssh/id_rsa`，不然后面找不到这个文件。
 为了保证权限正常，还需要添加一行内容。
 ```yml
 - chmod 600 ~/.ssh/id_rsa

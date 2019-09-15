@@ -21,6 +21,7 @@ module.exports = {
     // ],
     sidebar: {
       '/webApp/': [
+        '',
         'start',
         'nginx-setup',
         'node-server',
@@ -32,6 +33,19 @@ module.exports = {
         'd3-canvas-axis',
         'd3-react',
       ],
+      '/javascript/': [
+        'dom-event',
+        'js-inherit',
+        'js-module',
+        'js-this'
+      ],
+      '/git/': [
+        'git-common-usage'
+      ],
+      '/browser/': [
+        'browser-process-thread',
+        'when-open-a-url'
+      ]
     }
   }
 }

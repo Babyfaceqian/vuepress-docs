@@ -1,0 +1,41 @@
+# git常用命令
+- git clone <仓库地址> <本地目录(可选)>
+- .gitignore中排除某个文件，如!lib.a
+- git status 查看当前工作区状态
+- git rm --cached <文件> 取消某个文件的暂存(unstage)
+- git stash push <文件> 将某个文件缓存
+- git stash pop 将缓存文件弹出
+- git mv <文件> <目标文件> 重命名或移动文件
+- git tag -a <标签名> 打标签
+- git push --tags 推送本地标签
+- git commit --amend 将这次提交合并到上一次提交
+- git commit --date <日期> 将提交记录时间放在指定的时间
+- git reset <文件> 将暂存区的文件取消暂存(unstage)
+- git reset --soft <commit记录> 将某个commit记录退回到暂存区
+- git checkout -- <文件> 将某个改动的文件丢弃
+- git remote show 查看当前仓库
+- git remote update origin -p 更新远程仓库
+- git remote get-url --all <仓库名> 查看远程仓库地址
+- git pull <远程仓库> <分支名> 拉取某个分支的代码
+- git pull === git fetch + git merge
+- git pull --rebase === git fetch + git rebase
+- git blame <文件> 查看未暂存文件的改动信息
+- git checkout -b <新的分支名> <标签名> 从某个标签检出新分支
+- git checkout -b <新的分支名> tags/<标签名> 指定从标签检出新分支，防止标签名和分支名重复
+- git checkout -b <新的分支名> <commit记录> 从某个commit记录检出新分支
+- git branch -d <分支名> 删除某个分支
+- git fetch 只会拉取代码，不会merge
+- git rebase <主分支> <某分支> 将某分支和主分支的分离点移到主分支最新commit记录
+- git rebase --onto <新base> <旧base>  <分支名(可选)>
+- git repack
+- git cherry-pick <commit记录> 将某个commit记录合并到当前分支
+- git grep "<字符串>" -- "*.*" 抓取匹配文件中包含字符串的内容
+- git rebase -i <commit记录> 可用来修改commit记录
+- git merge --squash 将一个分支上所有提交都融合为一次提交
+- git bisect start
+- git bisect bad <commit记录(不填则为当前)>
+- git bisect good <commit记录> 设置要用二分法查找的起始点和结束点，执行检查命令，如果是好的，则执行git bisect good，如果是坏的，执行git bisect bad
+- git add . -e 修改更改的部分代码
+- git reflog 查看更改历史
+- git revert <commit历史> 取消某个commit
+- git submodule add <仓库地址> <本地目录> 将仓库克隆到某个目录作为子模块

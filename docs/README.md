@@ -18,3 +18,6 @@ footer: MIT Licensed | Copyright © 2018-present Evan You
 ## 前端
 - [快速搭建网站](/webApp/)
 - [d3笔记](/d3/)
+- [Javascript基础](/javascript/)
+- [git](/git/)
+- [浏览器基础知识](/browser/)

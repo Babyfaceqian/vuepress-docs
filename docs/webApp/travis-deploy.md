@@ -109,3 +109,5 @@ addons:
   ssh_known_hosts: 39.108.158.235
 ```
 保存 `.travis.yml` 并提交代码。现在travis可以自动免密登陆到部署服务器上执行命令了。
+
+如果是private项目，所有travis命令都需要带--pro参数，指定endpoint为api.travis.com

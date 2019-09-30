@@ -24,7 +24,16 @@
 - arr.every(callback[, thisArg]) 若收到一个空数组，此方法在一切情况下都会返回 true。
 - arr.fill(value[, start[, end]]) 不包括终止索引，value为对象是，填入引用
 - var newArray = arr.filter(callback(element[, index[, array]])[, thisArg])
-- arr.find(callback[, thisArg]) 没有匹配时返回undefined
+- arr.find(callback[, thisArg]) 没有匹配时返回undefined，在稀疏数组中，即使对于数组中不存在的条目的索引也会调用回调函数
+- arr.findIndex(callback[, thisArg]) 没有匹配时返回-1，在稀疏数组中，即使对于数组中不存在的条目的索引也会调用回调函数
+- var newArray = arr.flat([depth]) 默认值为 1，方法会移除数组中的空项
+- var new_array = arr.flatMap(function callback(currentValue[, index[, array]]) {
+    // 返回新数组的元素
+}[, thisArg]) map和flat的合并，相当于执行了map和flat
+- arr.forEach(callback[, thisArg]) 返回值undefined；那些已删除或者未初始化的项将被跳过；没有办法中止或者跳出 forEach() 循环，除了抛出一个异常。
+- arr.includes(valueToFind[, fromIndex]) includes作为通用方法，可以用于类数组对象
+- arr.indexOf(searchElement[, fromIndex = 0])
+- arr.join([separator]) 如果一个元素为 undefined 或 null，它会被转换为空字符串
 - 
 ### 遍历方法
 **arr.forEach(callback[, thisArg]);**

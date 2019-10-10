@@ -1,4 +1,4 @@
-# js-Error
+# Error
 new Error([message[, fileName[,lineNumber]]])
 
 message

@@ -1,4 +1,4 @@
-# js-Map
+# Map
 >Map 对象保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值。
 
 >new Map([iterable])

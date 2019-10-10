@@ -1,4 +1,4 @@
-# js-Number
+# Number
 new Number(value);
 >Number 对象主要用于：
 >- 如果参数无法被转换为数字，则返回 NaN。

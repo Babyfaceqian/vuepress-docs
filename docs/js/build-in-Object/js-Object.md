@@ -1,4 +1,4 @@
-# js-Object
+# Object
 
 ## 构造函数属性
 - Object.length

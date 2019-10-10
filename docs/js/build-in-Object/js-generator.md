@@ -1,4 +1,4 @@
-# js-generator
+# generator
 生成器对象是由一个 generator function 返回的,并且它符合可迭代协议和迭代器协议。
 
 ```js

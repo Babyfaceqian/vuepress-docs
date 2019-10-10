@@ -1,4 +1,4 @@
-# js-Function
+# Function
 new Function ([arg1[, arg2[, ...argN]],] functionBody)
 
 ## 原型对象

@@ -1,4 +1,4 @@
-# js-Boolean
+# Boolean
 - new Boolean([value])
 可选，用来初始化 Boolean 对象的值。也可以称为强制转换。
 > 如果省略该参数，或者其值为 0、-0、null、false、NaN、undefined、或者空字符串（""），则生成的 Boolean 对象的值为 false

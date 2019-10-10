@@ -4,7 +4,16 @@
 function A() {
   this.name = 'Michael';
 }
-A(); // this指向全局，在浏览器中指向window
+A(); // this指向全局，在浏览器中指向window；
+
+class B {
+  function fn(){
+    console.log(this);
+  }
+}
+let b = new B();
+let { fn } = b;
+fn(); // ES6的class默认为严格模式，this指向undefined。
 ```
 2. 当做构造函数使用
 ```js

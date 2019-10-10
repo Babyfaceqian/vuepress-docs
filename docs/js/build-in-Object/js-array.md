@@ -1,4 +1,4 @@
-# js-Array
+# Array
 ## Array方法
 - Array.from(arrayLike[, mapFn[, thisArg]])
 - Array.isArray(obj)

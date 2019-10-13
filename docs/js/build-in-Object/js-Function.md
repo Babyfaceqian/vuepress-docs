@@ -18,3 +18,31 @@ new Function ([arg1[, arg2[, ...argN]],] functionBody)
 - Function.prototype.toSource() 非标准
 - Function.prototype.toString() 获取函数的实现源码的字符串。覆盖了 Object.prototype.toString 方法。
 - 
+
+## 函数声明
+函数声明会提升
+```js
+function fn(){
+  //...
+}
+```
+## 函数表达式
+命名函数表达式声明的函数名只能在函数内部访问，并且为常量，对其赋值会失败。
+```js
+// 匿名函数表达式
+let a = function () {
+
+}
+// 命名函数表达式
+let a = function b(){
+  b = 1; // 会静默失败，严格模式下会报错
+}
+// 自执行匿名函数表达式
+(function(){
+
+})()
+// 自执行命名函数表达式
+(function b(){
+  b = 1; // 会静默失败，严格模式下会报错
+})()
+```

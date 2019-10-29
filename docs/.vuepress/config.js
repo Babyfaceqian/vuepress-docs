@@ -50,6 +50,7 @@ module.exports = {
             '/js/others/js-module',
             '/js/others/js-strict-mode',
             '/js/others/js-this',
+            '/js/others/js-binary-storage'
           ]
         }
       ],

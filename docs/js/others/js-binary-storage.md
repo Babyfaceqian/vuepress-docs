@@ -78,3 +78,7 @@ function sum(s, i) {
 }
 sum(0, Math.pow(2, 10) - 1);
 ```
+
+## 参考
+[ECMAScript 2015 (6th Edition, ECMA-262)](https://www.ecma-international.org/ecma-262/6.0)
+[MDN Number类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number)

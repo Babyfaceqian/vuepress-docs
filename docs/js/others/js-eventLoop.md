@@ -18,3 +18,30 @@ microtask（按优先级顺序排列）:process.nextTick,Promises（这里指浏
 js引擎首先从macrotask queue中取出第一个任务，执行完毕后，将microtask queue中的所有任务取出，按顺序全部执行；
 然后再从macrotask queue（宏任务队列）中取下一个，执行完毕后，再次将microtask queue（微任务队列）中的全部取出；
 循环往复，直到两个queue中的任务都取完。
+
+## 宏任务(Macrotask)和微任务(Microtask)
+### 定义
+- 宏任务指的是宿主发起的任务
+- 微任务指的是JS引擎发起的任务
+### 关系
+- 宏任务中可能包含微任务
+- 先执行当前的宏任务，然后执行所有该宏任务下的微任务。微任务执行完，再等待执行下一个宏任务。
+![宏任务和微任务](../images/macro-micro-task.png)
+```js
+let a = new Promise((resolve, reject) => {
+  console.log(1);
+  setTimeout(() => console.log(2));
+  resolve();
+})
+console.log(3);
+a.then(() => {
+  console.log(4);
+  setTimeout(() => console.log(5));
+});
+console.log(6)
+```
+分析对应的宏任务和微任务：
+
+![宏任务和微任务分析](../images/macro-micro-task-2.png)
+
+所以最后的打印顺序为：1，3，6，4，2，5

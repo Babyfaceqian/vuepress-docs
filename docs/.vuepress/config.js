@@ -42,7 +42,7 @@ module.exports = {
             '',
             '/js/others/dom-event',
             '/js/others/js-array',
-            '/js/others/js-equility-comparision',
+            '/js/others/js-comparision',
             '/js/others/js-eventLoop',
             '/js/others/js-inherit',
             '/js/others/js-logic-compute',
@@ -51,7 +51,9 @@ module.exports = {
             '/js/others/js-strict-mode',
             '/js/others/js-this',
             '/js/others/js-binary-storage',
-            '/js/others/js-object-primitive'
+            '/js/others/js-object-primitive',
+            '/js/others/js-ecma-specification-type',
+            '/js/others/js-lexical-grammar'
           ]
         }
       ],
@@ -109,6 +111,10 @@ module.exports = {
           children: [
             '',
             '/react/react-note',
+            '/react/react-16.12.0-1',
+            '/react/react-16.12.0-2',
+            '/react/react-16.12.0-3',
+            '/react/react-16.12.0-4'
           ]
         }
       ]

@@ -44,3 +44,16 @@
 设置对象的原型（即内部 [[Prototype]] 属性）。
 - Object.values()
 返回给定对象自身可枚举值的数组。
+
+## 对象内属性的描述
+对象内的每个属性都有对应的描述对象，可通过Object.getOwnPropertyDescriptor(o, property)获取到。
+```js
+let o = {
+  val: 1
+}
+Object.getOwnPropertyDescriptor(o, 'val') // 得到描述对象 {value: 1, writable: true, enumerable: true, configurable: true}
+```
+属性的描述对象可通过Object.defineProperty()方法修改。
+
+## 属性访问器
+对象有getter和setter访问器属性，用来访问其他属性。

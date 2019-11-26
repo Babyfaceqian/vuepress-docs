@@ -66,16 +66,64 @@ const element = {
 
 ## Refs转发
 
-## Fragements
+### 转发 refs 到 DOM 组件
+```js
+const FancyButton = React.forwardRef((props, ref) => ( // React 传递 ref 给 fowardRef 内函数 (props, ref) => ...，作为其第二个参数
+// 向下转发该 ref 参数到 <button ref={ref}>，将其指定为 JSX 属性。当 ref 挂载完成，ref.current 将指向 <button> DOM 节点
+  <button ref={ref} className="FancyButton"> 
+    {props.children}
+  </button>
+));
 
+const ref = React.createRef();  // 调用 React.createRef 创建了一个 React ref 并将其赋值给 ref 变量
+<FancyButton ref={ref}>Click me!</FancyButton>; // 指定 ref 为 JSX 属性，将其向下传递给 <FancyButton ref={ref}>
+```
+> 注意，第二个参数 ref 只在使用 React.forwardRef 定义组件时存在。常规函数和 class 组件不接收 ref 参数，且 props 中也不存在 ref。
+> Ref 转发不仅限于 DOM 组件，你也可以转发 refs 到 class 组件实例中。
+### 在高阶组件中转发 refs
+> refs 不会通过 props 传递，这是因为 ref 不是 prop 属性。就像 key 一样，其被 React 进行了特殊处理。如果你对 HOC 添加 ref，该 ref 将引用最外层的容器组件，而不是被包裹的组件。
+```js
+function logProps(Component) {
+  class LogProps extends React.Component {
+    componentDidUpdate(prevProps) {
+      console.log('old props:', prevProps);
+      console.log('new props:', this.props);
+    }
+    render() {
+      const {forwardedRef, ...rest} = this.props;
+
+      // 将自定义的 prop 属性 “forwardedRef” 定义为 ref
+      return <Component ref={forwardedRef} {...rest} />;
+    }
+  }
+  // 注意 React.forwardRef 回调的第二个参数 “ref”。
+  // 我们可以将其作为常规 prop 属性传递给 LogProps，例如 “forwardedRef”
+  // 然后它就可以被挂载到被 LogPros 包裹的子组件上。
+  return React.forwardRef((props, ref) => {
+    return <LogProps {...props} forwardedRef={ref} />;
+  });
+}
+```
+> 不能再函数式组件上使用 ref 属性，因为他们没有实例
+## Fragements
+- `<React.Fragment>` 或者 `<>`
 ## 高阶组件
 - 不要在render中使用高阶组件
-- 务必复制静态方法
-- refs不会被传递，解决方法是React.forwardRef
+- 务必复制静态方法，可以使用 hoist-non-react-statics 自动拷贝所有非 React 静态方法
+```js
+import hoistNonReactStatic from 'hoist-non-react-statics';
+function enhance(WrappedComponent) {
+  class Enhance extends React.Component {/*...*/}
+  hoistNonReactStatic(Enhance, WrappedComponent);
+  return Enhance;
+}
+```
+- refs不会被传递，解决方法是React.forwardRef（React 16.3 中引入）
 
 ## 与第三方库协同
 
 ## 深入JSX
+> JSX 仅仅只是 React.createElement(component, props, ...children) 函数的语法糖
 - Props 默认值为 “True”，但不建议这么做，可能与ES6写法混淆
 - 布尔类型、Null 以及 Undefined 将会忽略
 > false, null, undefined, and true 是合法的子元素。但它们并不会被渲染。
@@ -93,26 +141,113 @@ const element = {
 - Portals只是改变了节点位置，但仍存在于React树中，诸如事件冒泡等都不改变。
 
 ## 不使用ES6
+> 如果不使用 ES6，可以用 `create-react-class` 库代替。
+```js
+var Counter = createReactClass({
+  getInitialState: function() {
+    return {count: this.props.initialCount};
+  },
+  getDefaultProps: function() {
+    return {
+      name: 'Mary'
+    };
+  },
+  handleClick: function() { // 自动绑定this
+    alert(this.state.message);
+  },
+  render: function() {
+    return <h1>Hello, {this.props.name}</h1>;
+  }
+});
+```
 
+为了保险起见，以下三种做法都是可以的：
+```js
+class SayHello extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {message: 'Hello!'};
+  }
+  // 警告：这种语法还处于试验性阶段！
+  // 在这里使用箭头函数就可以把方法绑定给实例：
+  handleClick = () => {
+    alert(this.state.message);
+  }
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        Say hello
+      </button>
+    );
+  }
+}
+```
+
+- 在 constructor 中绑定方法。
+- 使用箭头函数，比如：onClick={(e) => this.handleClick(e)}。
+- 继续使用 createReactClass。
+
+### mixins
+将生命周期根据业务逻辑组合起来，按照定义顺序先后执行。
+```js
+var SetIntervalMixin = {
+  componentWillMount: function() {
+    this.intervals = [];
+  },
+  setInterval: function() {
+    this.intervals.push(setInterval.apply(null, arguments));
+  },
+  componentWillUnmount: function() {
+    this.intervals.forEach(clearInterval);
+  }
+};
+
+var createReactClass = require('create-react-class');
+
+var TickTock = createReactClass({
+  mixins: [SetIntervalMixin], // 使用 mixin
+  getInitialState: function() {
+    return {seconds: 0};
+  },
+  componentDidMount: function() {
+    this.setInterval(this.tick, 1000); // 调用 mixin 上的方法
+  },
+  tick: function() {
+    this.setState({seconds: this.state.seconds + 1});
+  },
+  render: function() {
+    return (
+      <p>
+        React has been running for {this.state.seconds} seconds.
+      </p>
+    );
+  }
+});
+
+ReactDOM.render(
+  <TickTock />,
+  document.getElementById('example')
+);
+```
 ## 不使用JSX
-
+> 每个 JSX 元素只是调用 React.createElement(component, props, ...children) 的语法糖。
 ## 协调（Diff算法）
 - 比对不同类型的元素
- - 当根节点为不同类型的元素时，React 会拆卸原有的树并且建立起新的树。
- > 当拆卸一颗树时，对应的 DOM 节点也会被销毁。组件实例将执行 componentWillUnmount() 方法。当建立一颗新的树时，对应的 DOM 节点会被创建以及插入到 DOM 中。组件实例将执行 componentWillMount() 方法，紧接着 componentDidMount() 方法。所有跟之前的树所关联的 state 也会被销毁。
+  - 当根节点为不同类型的元素时，React 会拆卸原有的树并且建立起新的树。
+  > 当拆卸一颗树时，对应的 DOM 节点也会被销毁。组件实例将执行 componentWillUnmount() 方法。当建立一颗新的树时，对应的 DOM 节点会被创建以及插入到 DOM 中。组件实例将执行 componentWillMount() 方法，紧接着 componentDidMount() 方法。所有跟之前的树所关联的 state 也会被销毁。
 - 比对同一类型的元素
- > 当比对两个相同类型的 React 元素时，React 会保留 DOM 节点，仅比对及更新有改变的属性。
+  - 当比对两个相同类型的 React 元素时，React 会保留 DOM 节点，仅比对及更新有改变的属性。
 - 比对同类型的组件元素
- > 当一个组件更新时，组件实例保持不变，这样 state 在跨越不同的渲染时保持一致。React 将更新该组件实例的 props 以跟最新的元素保持一致，并且调用该实例的 componentWillReceiveProps() 和 componentWillUpdate() 方法。下一步，调用 render() 方法，diff 算法将在之前的结果以及新的结果中进行递归。
- - 对子节点进行递归
- > 在默认条件下，当递归 DOM 节点的子元素时，React 会同时遍历两个子元素的列表；当产生差异时，生成一个 mutation。是否产生差异参照以上比对算法。不会检测位置是否发生变化。
- > 为了解决以上问题，引入了keys，对于相同keys的组件或元素仅位置发生变化，react会进行移动，不会更新，提高了性能。注意，key默认使用数组下标，那么修改顺序时会修改当前的 key，导致非受控组件的 state（比如输入框）可能相互篡改导致无法预期的变动，所以key最好为唯一值。
+  > 当一个组件更新时，组件实例保持不变，这样 state 在跨越不同的渲染时保持一致。React 将更新该组件实例的 props 以跟最新的元素保持一致，并且调用该实例的 componentWillReceiveProps() 和 componentWillUpdate() 方法。下一步，调用 render() 方法，diff 算法将在之前的结果以及新的结果中进行递归。
+  - 对子节点进行递归
+  > 在默认条件下，当递归 DOM 节点的子元素时，React 会同时遍历两个子元素的列表；当产生差异时，生成一个 mutation。是否产生差异参照以上比对算法。不会检测位置是否发生变化。
+  > 为了解决以上问题，引入了keys，对于相同keys的组件或元素仅位置发生变化，react会进行移动，不会更新，提高了性能。注意，key默认使用数组下标，那么修改顺序时会修改当前的 key，导致非受控组件的 state（比如输入框）可能相互篡改导致无法预期的变动，所以key最好为唯一值。
 
 ## Refs & Dom
 
 ## Render Props
 > 任何被用于告知组件需要渲染什么内容的函数 prop 在技术上都可以被称为 “render prop”.
-- 将 Render Props 与 React.PureComponent 一起使用时要小心
+- 将 Render Props 与 React.PureComponent 一起使用时要小心，因为每次浅比较 props 都为 false
 > 如果你在 render 方法里创建函数，那么使用 render prop 会抵消使用 React.PureComponent 带来的优势。因为浅比较 props 的时候总会得到 false，并且在这种情况下每一个 render 对于 render prop 将会生成一个新的值。要避免这种问题，可以将render props函数定义在子组件中，通过传递配置来动态展示内容。
 
 ## 静态类型检查
@@ -302,3 +437,8 @@ Animation Events
 Transition Events
 Other Events
 ```
+
+## Hook
+- useState
+- useEffect
+- useReducer

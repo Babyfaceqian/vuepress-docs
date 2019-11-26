@@ -46,3 +46,21 @@ let a = function b(){
   b = 1; // 会静默失败，严格模式下会报错
 })()
 ```
+
+## 构造函数调用
+函数作为构造函数调用时具体做了哪些步骤？
+```js
+let fn = new Fn([arg[,arg...]]) // 构造函数可接受多个参数
+```
+1. 以构造器的prototype属性为原型，创建一个新对象
+2. 将this和调用参数传给构造器，执行
+3. 如果构造器返回的是对象，则返回，否则返回第一步创建的对象。
+等效于以下代码：
+```js
+let fn = {};
+fn.__proto__ = Fn.prototype;
+let obj = fn.call(fn[,arg[,arg...]]);
+if (typeof obj === 'object') {
+  fn = obj;
+}
+```

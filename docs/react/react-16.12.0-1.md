@@ -1,6 +1,18 @@
 # React 16.12.0 源码解读（一）之首次渲染
 ![React首次渲染](./images/react-first-render.png)
 
+```js
+const APP = () => (
+		<div>
+				<span></span>
+				<span></span>
+		</div>
+)
+ReactDom.render(<APP/>, document.querySelector('#root'))
+```
+渲染以上组件得到的 `fiber tree`:
+![React Fiber](./images/react-fiber.png)
+
 客户端首次渲染指的是调用 `ReactDOM.render` 方法将 `React` 元素挂载到 `dom` 元素上，结合源码，下面依次列举了执行 `render` 时的函数调用栈。
 ## `render`
 调用 `ReactDOM.render` 方法，该方法接收三个参数。

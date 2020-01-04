@@ -11,6 +11,7 @@ module.exports = {
       { text: 'Git', link: '/git/' },
       { text: 'D3', link: '/d3/' },
       { text: '浏览器', link: '/browser/' },
+      { text: '库', link: '/modules/' },
     ],
     sidebar: {
       '/js/': [
@@ -115,6 +116,18 @@ module.exports = {
             '/react/react-16.12.0-2',
             '/react/react-16.12.0-3',
             '/react/react-16.12.0-4'
+          ]
+        }
+      ],
+      '/modules/': [
+        {
+          title: '库',
+          collapsable: true,
+          children: [
+            '',
+            '/modules/editor',
+            '/modules/time',
+            '/modules/utility',
           ]
         }
       ]

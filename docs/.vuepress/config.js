@@ -125,9 +125,13 @@ module.exports = {
           collapsable: true,
           children: [
             '',
-            '/modules/editor',
             '/modules/time',
             '/modules/utility',
+            '/modules/webpack',
+            '/modules/server',
+            '/modules/node-framework',
+            '/modules/http',
+            '/modules/file'
           ]
         }
       ]

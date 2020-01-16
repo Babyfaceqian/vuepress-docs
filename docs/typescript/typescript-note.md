@@ -3,7 +3,7 @@
 - 布尔值：boolean
 - 数字：number
 - 字符串：string
-- 数组：number[] | Array<number>
+- 数组：`number[]` | `Array<number>`
 - 元组：[string, number]
 - 枚举：{Red = 1, Green = 2, Blue = 4}
 - Any：any
@@ -13,7 +13,7 @@
 - Never：never
 - Object：object
 - Symbol：symbol
-- 类型断言：<string>someValue | someValue as string
+- 类型断言：`<string>someValue` | someValue as string
 
 ## 接口
 ### 可选属性：?

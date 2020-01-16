@@ -1,18 +1,35 @@
 # Webpack 相关
 ## 插件
-### js 压缩
+### JS
 #### terser-webpack-plugin
 该插件采用 `terser` 作为解析和压缩 Javascript 的工具。
 
 webpack 的 production 模式下默认启用的 `uglifyjs-webpack-plugin` 插件，其采用的 `uglify-js` 工具不支持 ES6+，且支持 ES6+ 的 `uglify-es` 已经停止维护。
 
 `terser` 是从 `uglify-es` folk 而来，保留了大部分的 API 和对 `uglify-js` 的兼容，支持 ES6+。
-
-### css 压缩
+### CSS
 #### optimize-css-assets-webpack-plugin
 默认采用 `cssnano` 作为解析和压缩 css 的工具。`cssnano` 是写在PostCSS生态系统之上的现代模块化压缩工具。
 
 该插件解决了 `extract-text-webpack-plugin` CSS打包重复问题，
+
+#### mini-css-extract-plugin
+> 这个插件将 CSS 提取到单独的文件中。它为每个包含 CSS 的 JS 文件创建一个 CSS 文件。它支持按需加载 CSS 和 sourcemap。
+它建立在新的 webpack v4 特性（模块类型）之上，需要 webpack 4 才能工作。
+
+与`extract-text-webpack-plugin`插件相比：
+- 异步加载
+- 无重复编译（性能）
+- 易于使用
+- 特定于CSS
+
+### html模板
+#### html-webpack-plugin
+根据html模板文件，将js、css等插入到html中
+
+### build
+#### clean-webpack-plugin
+清理 build 目录
 
 ### 多线程转换
 #### happyPack
@@ -21,6 +38,10 @@ webpack 的 production 模式下默认启用的 `uglifyjs-webpack-plugin` 插件
 ### 缓存编译
 #### autodll-webpack-plugin
 将那些不会修改的 npm 包的编译结果分开打包，并缓存起来，供 bundle 文件引用。
+
+### 打包分析
+#### webpack-bundle-analyzer
+使用交互式可缩放树映射可视化webpack输出文件的大小。
 
 ## Loader
 #### source-map-loader

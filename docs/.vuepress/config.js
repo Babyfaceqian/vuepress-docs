@@ -131,7 +131,8 @@ module.exports = {
             '/modules/server',
             '/modules/node-framework',
             '/modules/http',
-            '/modules/file'
+            '/modules/file',
+            '/modules/babel'
           ]
         }
       ]

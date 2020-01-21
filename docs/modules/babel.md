@@ -1,10 +1,39 @@
 # Babel
-## presets（预设）
-Babel 插件的组合，本质上可以完全由各式各样的插件代替，以下是常用的一些预设：
-#### [@babel/preset-env](https://www.babeljs.cn/docs/babel-preset-env)
-该预设允许开发者使用最新的 `JavaScript` 而无需关心目标环境需要哪些语法转换（以及可选的浏览器 `polyfill`）。
+> Babel 是一个工具链，主要用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。
+> - 语法转换
+> - 通过 Polyfill 方式在目标环境中添加缺失的特性 (通过 @babel/polyfill 模块)
+> - 源码转换 (codemods)
+> - 更多！
 
-通过设置 `targets` 或 `browserslist` 的方式设置目标环境，如果不设置，默认支持所有 `ECMAScript 2015+` 的代码。也就是说，启用该预设后，除了一些实验中的语法（如装饰器），其他最新的语法都能够转换。
+最常用的是前两点，**语法转换**和**特性添加**。语法转换是将 ES6+ 的**语法糖**转换成低版本的代码实现方式，如箭头函数；而特性添加，是为了补全目标环境中**缺失（未实现）的特性**，如 `Promise` 和 `includes`。
+
+## core（核心）
+#### @babel/core
+Babel 的核心转换库，会根据配置转换语法。
+
+## polyfill
+#### @babel/polyfill
+提供完整的 ES5+ 的 `polyfill`.
+> Babel 7.4.0 版本后，`@babel/polyfill` 被废弃，
+
+## presets（预设）
+Babel 插件的组合，本质上完全可以由各式各样的插件代替，以下是常用的一些预设：
+#### [@babel/preset-env](https://www.babeljs.cn/docs/babel-preset-env)
+> 该预设允许开发者使用最新的 `JavaScript` 而无需关心目标环境需要哪些语法转换（以及可选的浏览器 `polyfill`）。
+
+通过设置 `targets` 或 `.browserslist` 的方式设置目标环境，如果不设置，默认支持所有 `ECMAScript 2015+` 的代码。也就是说，启用该预设后，除了一些实验中的语法（如装饰器），其他最新的语法都能够转换，目标环境缺失的特性也会被添加。
+
+相关配置：
+
+##### useBuiltIns
+> "usage" | "entry" | false, 默认为 false.
+>
+> 该选项决定了 `@babel/preset-env` 如何处理 `polyfills`。
+>
+> 当设置为 `usage` 或 `entry` 时，`@babel-preset-env` 会引入 `core-js` 模块。
+>
+> Since @babel/polyfill was deprecated in 7.4.0, we recommend directly adding core-js and setting the version via the corejs option.
+
 
 #### [@babel/preset-react](https://www.babeljs.cn/docs/babel-preset-react)
 该预设组合了以下 `React` 开发用到的插件：

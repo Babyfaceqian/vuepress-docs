@@ -115,7 +115,8 @@ module.exports = {
             '/react/react-16.12.0-1',
             '/react/react-16.12.0-2',
             '/react/react-16.12.0-3',
-            '/react/react-16.12.0-4'
+            '/react/react-16.12.0-4',
+            '/react/react-lifecycle'
           ]
         }
       ],

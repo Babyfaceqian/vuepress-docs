@@ -12,6 +12,7 @@ module.exports = {
       { text: 'D3', link: '/d3/' },
       { text: '浏览器', link: '/browser/' },
       { text: '库', link: '/modules/' },
+      { text: 'Tips', link: '/tips/' },
     ],
     sidebar: {
       '/js/': [
@@ -24,8 +25,6 @@ module.exports = {
             '/js/build-in-Object/js-array-empty',
             '/js/build-in-Object/js-array',
             '/js/build-in-Object/js-ArrayBuffer',
-            '/js/build-in-Object/js-AsyncFunction',
-            '/js/build-in-Object/js-Atomics',
             '/js/build-in-Object/js-Boolean',
             '/js/build-in-Object/js-Error',
             '/js/build-in-Object/js-Function',
@@ -134,6 +133,17 @@ module.exports = {
             '/modules/http',
             '/modules/file',
             '/modules/babel'
+          ]
+        }
+      ],
+      '/tips/': [
+        {
+          title: 'Tips',
+          collapsable: true,
+          children: [
+            '',
+            '/tips/compiler',
+            '/tips/tips'
           ]
         }
       ]

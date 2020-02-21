@@ -1,18 +1,14 @@
 module.exports = {
-  title: 'Notebook',
+  title: 'Qian的技术博客',
   description: '前端笔记',
   navbar: false,
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
-      { text: 'Javascript', link: '/js/' },
-      { text: 'React', link: '/react/' },
-      { text: '网页应用', link: '/webApp/' },
-      { text: 'Git', link: '/git/' },
-      { text: 'D3', link: '/d3/' },
-      { text: '浏览器', link: '/browser/' },
-      { text: '库', link: '/modules/' },
-      { text: 'Tips', link: '/tips/' },
+      // { text: '首页', link: '/' },
+      { text: '归纳·博文', link: '/articles/' },
+      { text: '技术·笔记', link: '/js/' },
+      { text: '面试·刷题', link: '/webApp/' },
+      { text: '随想·摘要', link: '/webApp/' },
     ],
     sidebar: {
       '/js/': [

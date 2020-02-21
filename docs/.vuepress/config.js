@@ -4,142 +4,126 @@ module.exports = {
   navbar: false,
   themeConfig: {
     nav: [
-      // { text: '首页', link: '/' },
       { text: '归纳·博文', link: '/articles/' },
-      { text: '技术·笔记', link: '/js/' },
-      { text: '面试·刷题', link: '/webApp/' },
-      { text: '随想·摘要', link: '/webApp/' },
+      { text: '技术·笔记', link: '/notes/' },
+      { text: '面试·刷题', link: '/interview/' },
+      { text: '随想·摘要', link: '/capriccios/' },
     ],
     sidebar: {
-      '/js/': [
+      '/articles/': [
         {
-          title: '内置对象',   // 必要的
-          collapsable: true, // 可选的, 默认值是 true,
-          // sidebarDepth: 2,    // 可选的, 默认值是 1
-          children: [
-            '',
-            '/js/build-in-Object/js-array-empty',
-            '/js/build-in-Object/js-array',
-            '/js/build-in-Object/js-ArrayBuffer',
-            '/js/build-in-Object/js-Boolean',
-            '/js/build-in-Object/js-Error',
-            '/js/build-in-Object/js-Function',
-            '/js/build-in-Object/js-generator',
-            '/js/build-in-Object/js-Map',
-            '/js/build-in-Object/js-Number',
-            '/js/build-in-Object/js-Object',
-            '/js/build-in-Object/js-typed-array',
-          ]
-        },
-        {
-          title: '其他',
+          title: '网站搭建',
           collapsable: true,
-          children: [
-            '',
-            '/js/others/dom-event',
-            '/js/others/js-array',
-            '/js/others/js-comparision',
-            '/js/others/js-eventLoop',
-            '/js/others/js-inherit',
-            '/js/others/js-logic-compute',
-            '/js/others/js-memory-management',
-            '/js/others/js-module',
-            '/js/others/js-strict-mode',
-            '/js/others/js-this',
-            '/js/others/js-binary-storage',
-            '/js/others/js-object-primitive',
-            '/js/others/js-ecma-specification-type',
-            '/js/others/js-lexical-grammar'
+          children:[
+            '/articles/webApp/start',
+            '/articles/webApp/nginx-setup',
+            '/articles/webApp/node-server',
+            '/articles/webApp/react-client',
+            '/articles/webApp/travis-deploy'
           ]
         }
       ],
-      '/browser/': [
+      '/notes/': [
+        {
+          title: 'JavaScript内置对象',
+          collapsable: true,
+          children: [
+            '/notes/js/build-in-Object/js-array-empty',
+            '/notes/js/build-in-Object/js-array',
+            '/notes/js/build-in-Object/js-ArrayBuffer',
+            '/notes/js/build-in-Object/js-Boolean',
+            '/notes/js/build-in-Object/js-Error',
+            '/notes/js/build-in-Object/js-Function',
+            '/notes/js/build-in-Object/js-generator',
+            '/notes/js/build-in-Object/js-Map',
+            '/notes/js/build-in-Object/js-Number',
+            '/notes/js/build-in-Object/js-Object',
+            '/notes/js/build-in-Object/js-typed-array',
+          ]
+        },
+        {
+          title: 'JavaScript其他',
+          collapsable: true,
+          children: [
+            '/notes/js/others/dom-event',
+            '/notes/js/others/js-array',
+            '/notes/js/others/js-comparision',
+            '/notes/js/others/js-eventLoop',
+            '/notes/js/others/js-inherit',
+            '/notes/js/others/js-logic-compute',
+            '/notes/js/others/js-memory-management',
+            '/notes/js/others/js-module',
+            '/notes/js/others/js-strict-mode',
+            '/notes/js/others/js-this',
+            '/notes/js/others/js-binary-storage',
+            '/notes/js/others/js-object-primitive',
+            '/notes/js/others/js-ecma-specification-type',
+            '/notes/js/others/js-lexical-grammar'
+          ]
+        },
         {
           title: '浏览器',
           collapsable: true,
           children: [
-            '',
-            '/browser/browser-process-thread',
-            '/browser/when-open-a-url'
+            '/notes/browser/browser-process-thread',
+            '/notes/browser/when-open-a-url'
           ]
-        }
-      ],
-      '/webApp/': [
-        {
-          title: '网页应用',
-          collapsable: true,
-          children: [
-            '',
-            '/webApp/start',
-            '/webApp/nginx-setup',
-            '/webApp/node-server',
-            '/webApp/react-client',
-            '/webApp/travis-deploy'
-          ]
-        }
-      ],
-      '/d3/': [
+        },
         {
           title: 'D3',
           collapsable: true,
           children: [
-            '',
-            '/d3/d3-API',
-            '/d3/d3-canvas-axis',
-            '/d3/d3-react',
+            '/notes/d3/d3-API',
+            '/notes/d3/d3-canvas-axis',
+            '/notes/d3/d3-react',
           ]
-        }
-      ],
-      '/git/': [
+        },
         {
           title: 'Git',
           collapsable: true,
           children: [
-            '',
-            '/git/git-common-usage',
+            '/notes/git/git-common-usage',
           ]
-        }
-      ],
-      '/react/': [
-        {
-          title: 'React',
-          collapsable: true,
-          children: [
-            '',
-            '/react/react-note',
-            '/react/react-16.12.0-1',
-            '/react/react-16.12.0-2',
-            '/react/react-16.12.0-3',
-            '/react/react-16.12.0-4',
-            '/react/react-lifecycle'
-          ]
-        }
-      ],
-      '/modules/': [
+        },
         {
           title: '库',
           collapsable: true,
           children: [
-            '',
-            '/modules/time',
-            '/modules/utility',
-            '/modules/webpack',
-            '/modules/server',
-            '/modules/node-framework',
-            '/modules/http',
-            '/modules/file',
-            '/modules/babel'
+            '/notes/modules/time',
+            '/notes/modules/utility',
+            '/notes/modules/webpack',
+            '/notes/modules/server',
+            '/notes/modules/node-framework',
+            '/notes/modules/http',
+            '/notes/modules/file',
+            '/notes/modules/babel'
           ]
-        }
-      ],
-      '/tips/': [
+        },
+        {
+          title: 'React',
+          collapsable: true,
+          children: [
+            '/notes/react/react-note',
+            '/notes/react/react-16.12.0-1',
+            '/notes/react/react-16.12.0-2',
+            '/notes/react/react-16.12.0-3',
+            '/notes/react/react-16.12.0-4',
+            '/notes/react/react-lifecycle'
+          ]
+        },
+        {
+          title: 'TypeScript',
+          collapsable: true,
+          children: [
+            '/notes/typescript/typescript-note'
+          ]
+        },
         {
           title: 'Tips',
           collapsable: true,
           children: [
-            '',
-            '/tips/compiler',
-            '/tips/tips'
+            '/notes/tips/compiler',
+            '/notes/tips/tips'
           ]
         }
       ],
@@ -148,7 +132,6 @@ module.exports = {
           title: '面试题',
           collapsable: true,
           children: [
-            '',
             '/interview/react',
             '/interview/redux'
           ]

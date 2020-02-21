@@ -142,6 +142,17 @@ module.exports = {
             '/tips/tips'
           ]
         }
+      ],
+      '/interview/': [
+        {
+          title: '面试题',
+          collapsable: true,
+          children: [
+            '',
+            '/interview/react',
+            '/interview/redux'
+          ]
+        }
       ]
     }
   }

@@ -3,7 +3,7 @@
 ### React.Component
 在未手动实现 `shouldComponentUpdate` 方法时， `setState` 和 父组件 `render` 都会直接触发该组件的更新。`setState` 会触发 `render`，父组件 `render` 会触发该组件 `componentWillReceiveProps` 和 `render`。
 ### React.PureComponent
-内置实现了 `shouldComponentUpdate` 方法， 当调用 `setState` 和 父组件 `render` 时，`shouldComponentUpdate` 会对新旧 `state` 或 `props` 做一次浅比较，如果不相等则 `shouldComponentUpdate` 返回 `true` 执行 `render`，反之，`shouldComponentUpdate` 返回 `false`，不执行 `render`。父组件 `render` 一定会触发该组件的 `componentWillReceiveProps`。
+内置实现了 `shouldComponentUpdate` 方法， 当调用 `setState` 和 父组件 `render` 时，`shouldComponentUpdate` 会对新旧 `state` 或 `props` 做一次浅比较，如果不相等则 `shouldComponentUpdate` 返回 `true` 执行 `render`，反之，`shouldComponentUpdate` 返回 `false`，不执行 `render`。父组件 `render` 一定会触发该组件的 `componentWillReceiveProps`。手动实现的 `shouldComponentUpdate` 方法会覆盖默认的方法。
 
 ```js 
 /**

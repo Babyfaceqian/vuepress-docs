@@ -25,6 +25,13 @@ module.exports = {
       ],
       '/notes/': [
         {
+          title: 'HTTP',
+          collapsable: true,
+          children: [
+            '/notes/http/http-note'
+          ]
+        },
+        {
           title: 'JavaScript内置对象',
           collapsable: true,
           children: [

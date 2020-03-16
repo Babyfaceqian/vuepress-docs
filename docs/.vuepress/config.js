@@ -143,6 +143,15 @@ module.exports = {
             '/interview/redux'
           ]
         }
+      ],
+      '/capriccios/': [
+        {
+          title: '技术',
+          collapsable: true,
+          children: [
+            '/capriccios/tech/react-hooks'
+          ]
+        }
       ]
     }
   }

@@ -44,7 +44,7 @@ title: 编辑器
 ## react-ace
 `Ace` 代码编辑器的 React 版本，依赖 `ace-builds` 包。支持代码高亮、代码提示、主题、快捷键等。
 
-## react-codemirror
+## react-codemirror2
 `codemirror` 代码编辑器的 React 版本，依赖 `codemirror` 包。
 > CodeMirror是一个用JavaScript为浏览器实现的通用文本编辑器。它是专门用于编辑代码的，并且有超过100种语言模式和实现更高级编辑功能的各种插件。每种语言都配有功能齐全的代码和语法突出显示，以帮助阅读和编辑复杂的代码。
 

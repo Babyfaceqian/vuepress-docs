@@ -128,3 +128,57 @@ console.log(foo())
 ```
 [1, NaN, 2]
 ```
+
+## 用栈实现树的深度遍历和广度遍历。（阿里）
+
+
+
+
+
+
+## 设计一个函数，能够实现树型结构数据的遍历和搜索，callback是一个回调函数，有返回值时，那么终止遍历，返回callback的结果，否则遍历整棵树直至结束；（阿里）
+function transTree(treeData, callback){
+// 
+
+
+}
+
+
+## 给一个数组和目标值，求数组中和为目标值的所有组合，数组中每个值可以重复使用（阿里）
+```js
+// 用到了深度优先遍历的算法
+// 这里不考虑元素和目标值为非正数的情况，因为这样可能会有无数种可能
+function getCombination(arr, targetValue) {
+  arr = arr.filter(d => d > 0);
+  let values = []; // 组合
+  let indexes = []; // 组合下标
+  let valueResult = []; // 组合的集合
+  let indexResult = []; // 组合下标的集合
+  fn(arr, targetValue, values, indexes, valueResult, indexResult);
+  return {
+    valueResult,
+    indexResult
+  }
+}
+function fn(arr, sum, values, indexes, valueResult, indexResult) {
+  let len = arr.length;
+  if (sum === 0) {
+    // 和为0则保存组合并停止向下遍历
+    valueResult.push(values.slice(0));
+    indexResult.push(indexes.slice(0));
+    return;
+  } else if (sum < 0) {
+    // 和超出则停止向下遍历
+    return;
+  }
+  for (let i = 0;i < len;i++) {
+    sum -= arr[i];
+    values.push(arr[i]);
+    indexes.push(i);
+    fn(arr, sum, values, indexes, valueResult, indexResult);
+    let lastValue = values.pop();
+    indexes.pop();
+    sum += lastValue;
+  }
+}
+```

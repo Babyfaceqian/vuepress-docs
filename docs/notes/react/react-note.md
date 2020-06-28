@@ -440,5 +440,58 @@ Other Events
 
 ## Hook
 - useState
+
+```js
+// 示例
+// useState接受一个参数作为状态初始值，返回一个数组，第一项为当前状态值，第二项为修改状态的函数。
+const [count, setCount] = useState(0);
+```
 - useEffect
+
+```js
+// 示例一，每次渲染都会触发
+useEffect(() => {
+  // do something
+})
+// 示例二，第一次渲染触发
+useEffect(() => {
+  // do something
+}, [])
+// 示例三，count值改变时触发
+useEffect(() => {
+  // do something
+}, [count])
+```
+- useMemo
+
+```js
+// 示例一，每次渲染都会重新计算
+const memoizedValue = useMemo(() => {
+  return count * count;
+})
+// 示例二，第一次渲染会计算，其他返回缓存值
+const memoizedValue = useMemo(() => {
+  return count * count;
+}, [])
+// 示例三，count值改变时返回新计算的值（不同引用），其他返回缓存值
+const memoizedValue = useMemo(() => {
+  return count * count;
+}, [count])
+```
+- useCallback
+
+```js
+// 示例一，每次渲染都会返回新函数（不同引用）
+const memoizedCallback = useCallback(() => {
+  // do something
+})
+// 示例二，第一次渲染返回新函数
+const memoizedCallback = useCallback(() => {
+  // do something
+}, [])
+// 示例三，count值改变时返回新函数（不同引用）
+const memoizedCallback = useCallback(() => {
+  // do something
+}, [count])
+```
 - useReducer

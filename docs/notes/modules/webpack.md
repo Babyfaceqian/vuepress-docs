@@ -1,4 +1,9 @@
 # Webpack 相关
+## 原理
+
+插件架构，通过发布订阅事件来触发各个插件的执行。核心使用了Tapable给插件提供钩子，从而管理其生命周期。
+
+webpack使用acorn解析每一个经loader处理过的source，并且成AST，然后遍历所有节点，当遇到require调用时，会分析是AMD的还是CMD的调用，或者是require.ensure . 我们不再分析AST的遍历过程了。
 ## 插件
 ### JS
 #### terser-webpack-plugin

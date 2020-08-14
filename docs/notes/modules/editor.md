@@ -55,3 +55,17 @@ title: 编辑器
 
 ## jsoneditor
 一款针对 JSON 数据展示、编辑、格式化和校验的编辑器，拥有 Tree、Code、Text、Preview 四种模式。基于 `ace-builds` 和 `ajv`（json校验工具）。
+
+## draft.js
+Draft.js是一个JavaScript RTF编辑器框架，为React构建并由不可变模型支持。
+
+可扩展和可自定义：我们提供了构建基块，以使您能够创建从基本文本样式到嵌入式媒体的各种丰富的富文本撰写体验。
+声明式富文本： Draft.js无缝集成到 React应用程序中，使用熟悉的声明性API抽象化呈现，选择和输入行为的细节。
+不可变的编辑器状态： Draft.js模型是使用不可变的js构建的，提供具有功能状态更新的API，并积极利用数据持久性来实现可扩展的内存使用。
+
+## Braft Editor
+基于draft.js的强扩展性React富文本编辑器。
+- 简单易用，轻松上手
+- 丰富的多媒体支持
+- 细节皆可定制
+- 完善的扩展能力

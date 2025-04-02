@@ -14,7 +14,7 @@ module.exports = {
         {
           title: '网站搭建',
           collapsable: true,
-          children:[
+          children: [
             '/articles/webApp/start',
             '/articles/webApp/nginx-setup',
             '/articles/webApp/node-server',
@@ -123,6 +123,13 @@ module.exports = {
           collapsable: true,
           children: [
             '/notes/typescript/typescript-note'
+          ]
+        },
+        {
+          title: '框架',
+          collapsable: true,
+          children: [
+            '/notes/framework/reactVsVue',
           ]
         },
         {
